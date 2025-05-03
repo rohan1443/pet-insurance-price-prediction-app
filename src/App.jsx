@@ -104,12 +104,9 @@ function App() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 rounded-lg shadow-2xl bg-gray-100">
+    <div className="max-w-3xl mx-auto p-6 rounded-lg shadow-2xl bg-gray-100 font-serif">
       <div className="">
-        {/* <h1 className="text-4xl font-bold mb-6">AI-Powered Protection for Your Pets</h1> */}
-        {/* <p className="">Get personalized insurance rates powered by advanced machine learning algorithms that analyze your pet's unique health metrics. For both dogs and cats, our AI delivers insurance that truly understands your pet's needs.</p> */}
-        <h1 className="text-4xl font-bold mb-6">AI-Powered Pet Insurance—Tailored Protection for Your Furry Family</h1>
-        <p className="italic"> Advanced machine learning analyzes your pet’s breed, age, and health risks to deliver fair, personalized rates. Because every dog and cat deserves coverage as unique as they are.</p>
+        <HeroSection />
         <div className="hidden md:flex gap-4 mt-6 mb-6">
           <div className="w-1/2">
             <img
@@ -128,14 +125,9 @@ function App() {
         </div>
       </div>
 
-      {/* <p className="mb-6 text-gray-6</p>00 text-1xl">
-        Harness the power of your Tractive wearable in just one click! If your pup already wears a smart health tracker linked to their Tractive ID chip, hit Connect to Tractive API below to auto-populate every field—no typing required.
-      </p> */}
-      <p class="mb-6 text-gray-600 text-lg leading-relaxed max-w-2xl"
-      >
-        Harness the power of your Tractive wearable in just one click!
-        If your pup already wears a smart health tracker linked to their Tractive ID chip,
-        hit Connect to Tractive API below
+      <p class="mt-10 mb-6 text-gray-600 text-lg leading-relaxed text-center">
+
+        If your pup already wears a smart health tracker, then connect using CHIP ID,
         to auto-populate every field—no typing required.
       </p>
       {/* Connect Button */}
@@ -150,32 +142,13 @@ function App() {
         )}
       </div>
 
-      {!loading && <p className="flex flex-col items-center text-2xl font-semibold">OR</p>}
-      {/* <p className="italic mb-6 text-gray-600 text-1xl">
-     Prefer to keep things old-school? Simply scroll down and fill in the details yourself. The choice is yours: seamless automation or full manual control, all in one sleek interface.     
-     </p> */}
-
-      {/* Loader */}
-      {/* {loading && (
-        <div className="z-auto mb-6 p-4 bg-gray-100 rounded flex items-center">
-          <svg
-            className="animate-spin h-6 w-6 mr-4 text-green-600"
-            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-          >
-            <circle
-              className="opacity-25" cx="12" cy="12" r="10"
-              stroke="currentColor" strokeWidth="4"
-            />
-            <path
-              className="opacity-75" fill="currentColor"
-              d="M4 12a8 8 0 018-8v8z"
-            />
-          </svg>
-          <span className="text-gray-700">
-            {STATUS_STEPS[Math.min(statusIdx, STATUS_STEPS.length - 1)]}
-          </span>
-        </div>
-      )} */}
+      {!loading && (
+        <>
+          <p className="flex flex-col items-center text-2xl font-semibold mb-6 leading-relaxed">OR</p>
+          <p className="flex flex-col mb-6 items-center text-gray-600 text-lg">
+            You may enter manually.
+          </p>
+        </>)}
 
       {loading && (
         <div className="fixed inset-0 bg-opacity-50 backdrop-blur-xs flex items-center justify-center z-50">
@@ -255,9 +228,6 @@ function App() {
               </select>
             </div>
 
-
-
-
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block font-medium">Avg Daily Steps:</label>
@@ -321,24 +291,14 @@ function App() {
             </button>
           </form>
         )}
-        {/* {premium !== null && (
-        <div>
-          <h2 className="">Predicted Premium: DKK {premium}</h2>
-        </div>
-      )} */}
-        {/* {premium !== null && !loading && (
-          <div className="mt-6 p-6 bg-purple-600 text-white rounded-lg shadow-2xl text-center">
-            <h2 className="text-2xl font-semibold">Predicted Premium:</h2>
-            <p className="text-4xl font-bold mt-2">DKK {premium}</p>
-          </div>
-        )} */}
+
         {/* Loader + Result */}
         {predictLoading ? (
           <div className="flex justify-center items-center mt-6">
             <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
           </div>
         ) : premium !== null && (
-          <div className="mt-6 p-5 bg-purple-600 text-white rounded-lg shadow-lg text-center">
+          <div className="mt-6 p-5 bg-sky-500 text-white rounded-lg shadow-lg text-center">
             <h2 className="text-2xl font-semibold">🎉 Predicted Premium:</h2>
             <p className="text-4xl font-bold mt-2">DKK {premium}</p>
           </div>
