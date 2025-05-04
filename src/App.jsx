@@ -13,6 +13,27 @@ const MOCKED_API_DATA = {
   health_events: 0
 };
 
+const DOG_BREEDS = ['Beagle',
+  'Great Dane',
+  'German Shepherd',
+  'Australian Shepherd',
+  'Cocker Spaniel',
+  'Boxer',
+  'Cavalier King Charles Spaniel',
+  'Dachshund',
+  'Pomeranian',
+  'French Bulldog',
+  'Pug',
+  'Chihuahua',
+  'Rottweiler',
+  'Border Collie',
+  'Golden Retriever',
+  'Jack Russell Terrier',
+  'Bulldog',
+  'Siberian Husky',
+  'Labrador Retriever',
+  'Dalmatian']
+
 function App() {
   // Form state
   const [form, setForm] = useState({
@@ -110,7 +131,7 @@ function App() {
         <div className="hidden md:flex gap-4 mt-6 mb-6">
           <div className="w-1/2">
             <img
-              src="https://plus.unsplash.com/premium_photo-1667563114911-13425737c6f5?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              src="https://images.unsplash.com/photo-1632498301446-5f78baad40d0?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fGRvZ3MlMjBodW1hbnxlbnwwfHwwfHx8MA%3D%3D"
               alt="Happy dog"
               className="rounded-lg shadow-xl h-full object-cover"
             />
@@ -122,6 +143,13 @@ function App() {
               className="rounded-lg shadow-xl h-full object-cover"
             />
           </div>
+        </div>
+        <div className="md:hidden lg:hidden sm:flex gap-4 mt-6 mb-6">
+          <img
+            src="https://images.unsplash.com/photo-1736128081617-b468f8bf7920?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fGNhdHMlMjBhbmQlMjBkb2dzJTIwY2FyZXxlbnwwfHwwfHx8MA%3D%3D"
+            alt="CatAndDo"
+            className="rounded-lg shadow-xl h-full object-cover"
+          />
         </div>
       </div>
 
@@ -193,7 +221,8 @@ function App() {
             </svg>
             <span className="text-gray-700">
               {/* {STATUS_STEPS[Math.min(statusIdx, STATUS_STEPS.length - 1)]} */}
-              Fetching your premium...Our AI ML Algorithms is working hard to deliver the best rate for your pet!
+              <p>Please Hang on! We are fetching an estimated premium...</p>
+              <p>Our Machine Learning Algorithms are working hard to deliver the best rate for your pet!</p>
             </span>
           </div>
         </div>
@@ -221,10 +250,7 @@ function App() {
                 required
               >
                 <option value="">--Select--</option>
-                <option>Beagle</option>
-                <option>Bulldog</option>
-                <option>German Shepherd</option>
-                {/* ...all other breeds */}
+                {DOG_BREEDS.map(breed => <option>{breed}</option>)}
               </select>
             </div>
 
@@ -297,7 +323,7 @@ function App() {
           <div className="flex justify-center items-center mt-6">
             <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
           </div>
-        ) : premium !== null && (
+        ) : !loading && premium !== null && (
           <div className="mt-6 p-5 bg-sky-500 text-white rounded-lg shadow-lg text-center">
             <h2 className="text-2xl font-semibold">🎉 Predicted Premium:</h2>
             <p className="text-4xl font-bold mt-2">DKK {premium}</p>
